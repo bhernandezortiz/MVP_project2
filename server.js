@@ -10,6 +10,8 @@ const sql = postgres(process.env.DATABASE_URL);
 
 app.use(express.static("public"));
 
+
+
 app.listen(process.env.PORT, () => {
     console.log(`listening on Port ${process.env.PORT}`);
 });
