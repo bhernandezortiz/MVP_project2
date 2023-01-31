@@ -6,13 +6,17 @@ const app = express();
 const port = process.env.PORT || 3000;
 const client = require ('./db')
 
-app.use()
-
-const sql = postgres(process.env.DATABASE_URL);
-
+app.use(express.json())
 
 app.route('/home')
-.get(async (req, res))
+    .get(async (req, res) => {
+        try {
+            const result = await client.query("SELECT * FROM skater_spots")
+            res.status(200).type(application/JS0N).json(result.rows)
+        } catch (error) {
+            console.log(error.message)
+        }
+    })
 
 
 app.use(express.static('./public'));
